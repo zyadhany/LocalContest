@@ -1,3 +1,4 @@
+from flask import redirect, render_template, session, request
 
 
 def register():
@@ -26,10 +27,9 @@ def register():
 
 
 def login():
-    return ("login")
-    return render_template("index.html")
     session.clear()
     if request.method == "POST":
+        return
         name = request.form.get("username")
         password = request.form.get("password")
         if not name or not password:

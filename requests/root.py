@@ -22,7 +22,6 @@ def after_request(response):
     return response
 
 @root_bp.route("/")
-@login_required
 def index():
     return redirect("home/")
 
