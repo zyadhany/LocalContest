@@ -13,12 +13,9 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
-cnt = [1]
 @app.before_request
 def before_request_func():
-    if cnt[0] < 10:
-        cnt[0] += 1
-        return
+    return
     if request.endpoint not in ConstVar.LOGIN_URL_ENDPOINTS:
         print(request.endpoint)
         session['last_url_login'] = request.url

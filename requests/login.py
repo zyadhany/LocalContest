@@ -1,5 +1,5 @@
 from flask import redirect, render_template, session, request
-
+from healper import login_post
 
 def register():
     return ("register")
@@ -29,14 +29,11 @@ def register():
 def login():
     session.clear()
     if request.method == "POST":
-        return
-        name = request.form.get("username")
-        password = request.form.get("password")
-        if not name or not password:
-            return render_template("login.html",message="Empty field")
-        Name = db.execute("SELECT * FROM users where username = (?)",name)
-        if not Name or not check_password_hash(Name[0]["password_hash"], password):
+        handle = login_post(request.form)
+        # error massage if can't login
+        if handle is None:
             return render_template("login.html",message="invalid username and/or password ")
-        session["user_id"] = Name[0]["id"]
+        session["handle"] = handle
         return redirect("/")
+
     return render_template("login.html") 
