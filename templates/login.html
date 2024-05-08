@@ -1,41 +1,30 @@
 {% extends "loging_page.html" %}
 
+{% block title%} Login Page {%endblock%}
+
 {% block main %}
-<form action="/login" method="post" id="form">
-    <div class="error-message">
-      <h4>{{ message }}</h4>
-    </div>
-    <div class="input_div">
-      <label for="username">Username</label>
-      <input
-        type="text"
-        autofocus
-        name="username"
-        id="username"
-        placeholder="Username"
-        type="text"
-        required
-        autocomplete="off"
-      />
-    </div>
-    <div class="input_div">
-      <label for="password">Password</label>
-      <input
-        type="password"
-        autofocus
-        name="password"
-        id="password"
-        placeholder="password"
-        type="password"
-        required
-        autocomplete="off"
-      />
-    </div>
-    <div id="buttons">
-      <button type="submit">Log In</button>
-      <a href="/register">Sign up</a>
-    </div>
-  </form>
+
+
+<form class="form-detail" action="/login" method="post">
+  <h4 class="error-message">{{ message }}</h4>
+  <h2>Enter Your Account</h2>
+  <div class="form-row">
+    <label for="your-email">Your Email</label>
+    <input type="text" name="email" id="your-email" class="input-text" placeholder="Your Email">
+    <i class="fas fa-envelope"></i>
+  </div>
+  <div class="form-row">
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password" class="input-text" placeholder="Your Password" required>
+    <i class="fas fa-lock"></i>
+  </div>
+  <div class="form-row-last">
+    <input type="submit" name="login" class="register" value="Sing In">
+    <a href="/register">
+      <input type="button" name="register" class="register" value="Register">
+    </a>
+  </div>
+</form>
 {% endblock %}
 
                 

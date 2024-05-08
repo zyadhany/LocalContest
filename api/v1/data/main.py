@@ -18,16 +18,16 @@ def GetObject(clc, id):
             return objs[0]
     return None
 
-@app_data.route('/<clc>/', methods=['GET'])
-@app_data.route('/<clc>/<id>', methods=['GET'])
+@app_data.route('/gen/<clc>/', methods=['GET'])
+@app_data.route('/gen/<clc>/<id>', methods=['GET'])
 def get_object(clc=None, id=None):
     obj = GetObject(clc, id)
     if obj is None:
         abort(404)
     return jsonify(obj.to_dict())
 
-@app_data.route('/<clc>/', methods=['DELETE'])
-@app_data.route('/<clc>/<id>', methods=['DELETE'])
+@app_data.route('/gen/<clc>/', methods=['DELETE'])
+@app_data.route('/gen/<clc>/<id>', methods=['DELETE'])
 def delete_object(clc=None, id=None):
     obj = GetObject(clc, id)
     if obj is None:
@@ -36,7 +36,7 @@ def delete_object(clc=None, id=None):
     return {'status':"deletet complate"}, 200
 
 
-@app_data.route('/<clc>/', methods=['POST'])
+@app_data.route('/gen/<clc>/', methods=['POST'])
 def add_object(clc=None, id=None):
     
     if 'info' not in request.json:
@@ -49,8 +49,8 @@ def add_object(clc=None, id=None):
     return {'status':"added complate"}, 200
 
 
-@app_data.route('/<clc>/', methods=['PUT'])
-@app_data.route('/<clc>/<id>', methods=['PUT'])
+@app_data.route('/gen/<clc>/', methods=['PUT'])
+@app_data.route('/gen/<clc>/<id>', methods=['PUT'])
 def edit_object(clc=None, id=None):
     obj = GetObject(clc, id)
     if obj is None:
@@ -65,7 +65,7 @@ def edit_object(clc=None, id=None):
     storage.save()
     return {'status':"eddit complate"}, 200
 
-@app_data.route('/', methods=['GET'])
+@app_data.route('/gen/', methods=['GET'])
 def rrr():
     '''main api data routing'''
     return ''

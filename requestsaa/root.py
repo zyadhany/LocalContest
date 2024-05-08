@@ -27,7 +27,6 @@ def index():
 
 @root_bp.route("/logout")
 def logout():
-    return ("aaaa")
     session.clear()
     return redirect("/")
 

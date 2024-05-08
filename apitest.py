@@ -1,11 +1,12 @@
 import requests
 
-url = 'http://127.0.0.1:5000/api/data/accounts'
+url = 'http://127.0.0.1:5000/api/gen/accounts'
 
 payload = {
     'info': {
-        'email': 'SOGA',
-        'password': '1323'
+        'email': 'youssef',
+        'password': '123',
+        'handle': 'youssef'
     },
     'attach': {
         'email': 'Youssef',
@@ -14,6 +15,6 @@ payload = {
 
 headers = {'Content-Type': 'application/json'}
 
-response = requests.request('PUT', url, json=payload, headers=headers)
+response = requests.request('POST', url, json=payload, headers=headers)
 
 print(response.text)

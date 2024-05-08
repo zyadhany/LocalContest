@@ -2,7 +2,6 @@ from flask import redirect, render_template, session, request
 from healper import login_post
 
 def register():
-    return ("register")
     if request.method == "POST":
         name = request.form.get("username")
         password = request.form.get("password")
