@@ -1,24 +1,44 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Posts</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/layoutstyle.css"/>
     {% block style %} {% endblock %}
+    <title>CodeHuck</title>
   </head>
   <body>
-    <nav>
-      <a href="/profile" id="leftNav">
-        <!-- Add Link to Porfile -->
-        <img src="/static/images/user_image/{{me['id']}}.png" alt="profile image" width="50px" height="50px" />
-        <p>{{me['username']}}</p>
-      </a>
-      <div class="rightNav">
-        <a href="/">Home</a>
-        <a href="/logout">Log Out</a>
-      </div>
-    </nav>
-    {% block main %} {% endblock %}
-    <script src="/static/js/app2.js"></script>
+    <header>
+      <div class="links">
+        <ul>
+          <li><a href="/home">Home</a></li>
+          <li><a href="/profile">Profile</a></li>
+          <li><a href="/groups">Groups</a></li>
+          <li><a href="/contests">Contests</a></li>
+          <li><a href="/problems">Problems</a></li>
+          <li><a href="/submissions">Submissions</a></li>
+        </ul>
+        <ul>
+          <li><a href="/logout" id="logout">Logout</a></li>
+        </ul>
+      </div> 
+    </header>
+    <div class="content">
+      <aside class="content-body">
+        <h2> {% block Title%} {% endblock %} </h2>
+        <hr>
+        {% block main %} {% endblock %}    
+      </aside> 
+      <aside>
+        <div class="profile">
+          <img src="/static/css/homeim.png" alt="Profile Image">
+            <h2>{{user['handle']}}</h2>
+            <p>Rating: {{user['rate']}}</p>
+            <p>Problems Solved: {{user['solved']}}</p>
+            <p>{{user['status']}}</p>
+          </div>
+        </aside> 
+    </div>
   </body>
 </html>

@@ -1,12 +1,12 @@
-#!/usr/bin/python
-
-from models.accounts import account
-from models import storage
+from models import Group, storage
 
 
-acc = account()
-acc.email = 'zyadhany'
-acc.password = '123'
-acc.save()
 
+for i in range(10):
+    gr = Group()
+    gr.name = f"Group {i}"
+    gr.save()
 
+gr = storage.all(Group)
+print(gr)
+exit(0)

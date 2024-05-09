@@ -10,9 +10,9 @@ from os import getenv
 #from flask_cors import CORS
 from .data import app_data
 
-
 app = Flask(__name__)
 #cors = CORS(app, resources={r"/api/*": {"origins": "0.0.0.0"}})
+app.config['TEMPLATES_FOLDER'] = 'templates'
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"

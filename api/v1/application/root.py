@@ -3,9 +3,10 @@ from healper import login_required
 from .home import home_bp
 from .profile import profile_bp
 from .groups import groups_bp
+from .contests import contests_bp
 from .login import login, register
 from flask import Blueprint
-from healper import login_required, ConstVar
+from healper import login_required, ConstVar, user_profile
 
 
 root_bp = Blueprint('root_bp', __name__)
@@ -13,6 +14,7 @@ root_bp = Blueprint('root_bp', __name__)
 root_bp.register_blueprint(home_bp, url_prefix='/home')
 root_bp.register_blueprint(profile_bp, url_prefix='/profile')
 root_bp.register_blueprint(groups_bp, url_prefix='/groups')
+root_bp.register_blueprint(contests_bp, url_prefix='/contests')
   
 @root_bp.before_request
 def before_request_func():
@@ -35,6 +37,7 @@ def after_request(response):
 def index():
     return redirect("home/")
 
+
 @root_bp.route("/logout")
 def logout():
     session.clear()
@@ -47,3 +50,5 @@ def register_route():
 @root_bp.route("login", methods=["GET", "POST"])
 def login_route():
     return login()
+
+

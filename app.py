@@ -6,12 +6,13 @@ from flask_session import Session
 from healper import login_required, ConstVar
 from models import storage
 from os import getenv
-#from flask_cors import CORS
+from flask_cors import CORS
 from api.v1.application import root_bp
 from api.v1.data import app_data
 
+
 app = Flask(__name__)
-#cors = CORS(app, resources={r"/api/*": {"origins": "0.0.0.0"}})
+cors = CORS(app, resources={r"/api/*": {"origins": "0.0.0.0"}})
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
@@ -31,7 +32,7 @@ def tear(self):
 @app.errorhandler(404)
 def not_found(error):
     ''' handle error '''
-    return make_response(jsonify({'error': 'Not found'}), 404)
+    return make_response(render_template('404.html'), 404)
 
 if __name__ == '__main__':
     app.run(debug=True)

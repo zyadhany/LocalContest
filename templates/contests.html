@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block Title %} Contests {% endblock %}
+
+{% block main %}
+
+<style>
+.contest-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.contest-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.contest-time {
+  font-size: 0.8em;
+  color: #999;
+}
+
+.contest-info {
+  display: flex;
+  align-items: center;
+}
+
+.contest-info span:not(:last-child) {
+  margin-right: 10px;
+}
+
+.contest-link {
+  text-decoration: none;
+  color: #007bff;
+}
+
+a {
+  text-decoration: none;
+  color: inherit; 
+}
+</style>
+
+{% for i in range(1, 5) %}
+<a href="/contest/4123">
+<div class="contest-card">
+  <div class="contest-header">
+    <span class="contest-name">CodeHuck Round #{{i*17}}</span>
+    <span class="contest-time">08/06/2023 (17:00 MSK)</span>
+  </div>
+  <div class="contest-info">
+    <span class="contest-duration">2 hours</span>
+    <span class="contest-rating">1000-1600</span>
+  </div>
+</div>
+</a>
+{% endfor %}
+
+
+
+{% endblock %}

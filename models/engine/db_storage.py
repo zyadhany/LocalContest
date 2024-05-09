@@ -5,13 +5,16 @@ import models
 from models.base_model import BaseModel, Base
 from models.user import User
 from models.accounts import account
+from models import Group, Contest, Problem, Submission
 from os import getenv
 import sqlalchemy
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 
 classes = {
-            'users': User, 'accounts' : account
+            'users': User, 'accounts' : account,
+            'contests': Contest, 'problems':Problem,
+            'submissions':Submission, 'groups': Group
         }
 
 def ConvertStrCls(st):
@@ -37,6 +40,7 @@ class DBStorage:
                                              SQL_HOST, SQL_DB),
                                       pool_pre_ping=True)
         Base.metadata.create_all(self.__engine)
+        #Base.metadata.drop_all(self.__engine)
 
     def count(self, cls=None):
         ''' count of objects of class '''

@@ -1,0 +1,19 @@
+body {
+    background-color: #5eb2b3;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Set the height of the body to 100% of the viewport height */
+}
+
+.timer {
+    width: 200px; /* Set the width to the desired value */
+}
+
+#timerDisplay {
+    font-size: 25px;
+    font-weight: 700;
+    font-size: 36px;
+    color: white;
+}

@@ -1,85 +1,47 @@
 {% extends "layout.html" %}
-{% block style %}
-<link rel="stylesheet" href="/static/css/profile.css" />
-{% endblock %}
-{% block main %}
-<div id="mainProfile">
-  <div>
-    <div id="Data-prof">
-      <h2>My Profile</h2>
-      <div style="width: 100%;">
-        <img
-          src="/static/images/user_image/{{him['id']}}.png"
-          alt="zyad"
-          width="120px"
-          height="120px"
-        />
-        <p>{{him['username']}}</p>
-        <article>
-          <h4>About Me</h4>
-          <p>
-            {{him['about']}}
-          </p>
-        </article>
-      </div>
-    </div>  
-    <main>
-      {% for post in posts %}
-        <div class="post">
-          <div class="post-top">
-            <div class="left-top" onclick="goProf({{post['user_id']}})">
-              <img
-                src="/static/images/user_image/{{post['user_id']}}.png"
-                alt="user_image"
-                width="50px"
-                height="50px"
-              />
-              <div>
-                <h4>{{post['name']}}</h4>
-                <p>{{post['date']}}</p>
-              </div>
-            </div>
-            <div
-            {% if me['id'] != post['user_id'] %}
-            style="visibility: hidden;"
-            {% endif %}
-            onclick="delete_post({{post.id}})"
-            >
-              <img
-                src="/static/images/icons/trash.svg"
-                alt="trash"
-                width="35px"
-                height="35px"
-              />
-            </div>
-          </div>
-          <img src="/static/images/post_images/{{post['id']}}.png" alt="italy" />
-          <p style="text-align: justify">
-            {{post['text']}}
-          </p>
-          <div class="post-bottom">
-            <button>
-              <img
-                {% if post.islike %}
-                onclick="dislike({{post.id}})"
-                src="/static/images/icons/heart-active.svg"
-                {% else %}
-                onclick="like({{post.id}})"
-                src="/static/images/icons/heart-inactive.svg"
-                {% endif %}       
-                alt="heart-inactive"
-                width="36px"
-                height="36px"
-              />
-              <p>{{post.like}} Likes</p>
-            </button>
-            <input type="text" placeholder="Write a comment" />
-          </div>
-        </div>
-      {% endfor %}
-    </main>
-  </div>
 
-</div>
+{% block style %} 
+<link rel="stylesheet" href="/static/css/profile.css"/>
 {% endblock %}
 
+{% block Title %} Profile {% endblock %}
+
+{% block main %} 
+<form class="form-detail" method="post">
+	<div class="data-input">
+		<div class="form-row">
+			<label for="age">Age</label>
+			<input type="number" name="age" id="age" class="input-text" placeholder="Your Age", value="{{user['age']}}">
+			<i class="fas fa-user"></i>
+		</div>
+		<div class="form-row">
+			<label for="gender">Gender</label>
+			<select id="gender" value="{{user['gender']}}" name="gender" class="input-text" style="background-color: #fff; width: 300px; height: 50px; color: #999;" >
+				<option value="">Select Gender</option>
+				<option value="male" {% if user['gender'] == 'male' %}selected{% endif %}>Male</option>
+				<option value="female" {% if user['gender'] == 'female' %}selected{% endif %}>Female</option>			  
+				<option value="Eng" {% if user['gender'] == 'Eng' %}selected{% endif %}>Eng</option>
+			</select>
+			<i class="fas fa-venus-mars"></i>
+		</div>
+		<div class="form-row">
+			<label for="image">Select Image</label>
+			<input type="file" id="image" class="input-file" accept="image/*" style="background-color: #fff;">
+			<i class="fas fa-image"></i>
+		</div>
+		<div class="form-row">
+			<label for="birthday">Birthday</label>
+			<input type="date" id="birthday" class="input-text" >
+			<i class="fas fa-birthday-cake"></i>
+		</div>
+		<div class="form-row">
+			<label for="status">status</label>
+			<textarea id="status" name="status" maxlength="1024" rows="10" cols="50">{{user['status']}}</textarea>
+			<i class="fas fa-birthday-cake"></i>
+		</div>
+	</div>
+	<div class="form-row-last">
+		<input type="submit" class="register", value="Save">
+	</div>
+</form>
+{% endblock %} 
