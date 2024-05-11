@@ -1,65 +1,55 @@
 {% extends "layout.html" %}
 
+{% block style %} 
+<link rel="stylesheet" href="/static/css/contest.css"/>
+{% endblock %}
+
 {% block Title %} Contests {% endblock %}
 
 {% block main %}
 
-<style>
-.contest-card {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 10px;
-  margin-bottom: 15px;
-}
+<div class="table-container">
+  <table>
+      <thead>
+          <tr>
+              <th>Name</th>
+              <th>Writers</th>
+              <th>Start</th>
+              <th>Duration</th>
+              <th>Registartion</th>
+            </tr>
+          </thead>
+    {% for contest in contests %}
+          <tbody>
+            <!-- Repeat this row for each entry -->
+            <tr class="entry">
+              <!-- Name -->
+              <td><a href="#">CodeHuck Div4 Round #{{contest['id']}}</a></td>
 
-.contest-header {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
+              <!-- Writers -->
+              <td class="writers">
+                <a href="/profile/Saged Rayan">Saged Rayan</a>
+                <a href="/profile/Abdelrahman Atef">Abdelrahman Atef</a>
+                <a href="/profile/Zyad Hany">Zyad Hany</a>
+                <a href="/profile/Basmala Adel">Basmala Adel</a>
+              </td>
 
-.contest-time {
-  font-size: 0.8em;
-  color: #999;
-}
+              <!-- Start -->
+              <td> May  /08/2024 10:05</td>
 
-.contest-info {
-  display: flex;
-  align-items: center;
-}
+               <!-- Length -->
+               <td>02:30</td>
 
-.contest-info span:not(:last-child) {
-  margin-right: 10px;
-}
+               <!-- Final standings -->
+               <td>x55583</td>
+          </tr>
 
-.contest-link {
-  text-decoration: none;
-  color: #007bff;
-}
+          <!-- ... other rows ... -->
 
-a {
-  text-decoration: none;
-  color: inherit; 
-}
-</style>
-
-{% for i in range(1, 5) %}
-<a href="/contest/4123">
-<div class="contest-card">
-  <div class="contest-header">
-    <span class="contest-name">CodeHuck Round #{{i*17}}</span>
-    <span class="contest-time">08/06/2023 (17:00 MSK)</span>
-  </div>
-  <div class="contest-info">
-    <span class="contest-duration">2 hours</span>
-    <span class="contest-rating">1000-1600</span>
-  </div>
+      </tbody>
+      {% endfor %}
+  </table>
 </div>
-</a>
-{% endfor %}
 
 
 

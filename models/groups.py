@@ -7,7 +7,7 @@ from sqlalchemy.orm import relationship
 
 class Group(BaseModel, Base):
     """This class represents a contest"""
-    __tablename__ = 'groups'
+    __tablename__ = 'group_contest'
     
     name = Column(String(32))
     star = Column(Integer)

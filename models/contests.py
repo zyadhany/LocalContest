@@ -13,6 +13,6 @@ class Contest(BaseModel, Base):
     contest_name = Column(String(32), nullable=False)
     contest_level = Column(Integer)
     start_time = Column(DateTime)
-    group_id = Column(Integer, ForeignKey('groups.id'), nullable=False)
+    group_id = Column(Integer, ForeignKey('group_contest.id'), nullable=False)
     group = relationship("Group", back_populates="contests")
     problems = relationship("Problem", back_populates="contest")
