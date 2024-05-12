@@ -4,6 +4,7 @@ from .home import home_bp
 from .profile import profile_bp
 from .groups import groups_bp
 from .contests import contests_bp
+from .problems import problems_bp
 from .login import login, register
 from flask import Blueprint
 from healper import login_required, ConstVar, user_profile
@@ -15,6 +16,7 @@ root_bp.register_blueprint(home_bp, url_prefix='/home')
 root_bp.register_blueprint(profile_bp, url_prefix='/profile')
 root_bp.register_blueprint(groups_bp, url_prefix='/groups')
 root_bp.register_blueprint(contests_bp, url_prefix='/contests')
+root_bp.register_blueprint(problems_bp, url_prefix='/problems')
   
 @root_bp.before_request
 def before_request_func():

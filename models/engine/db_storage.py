@@ -65,10 +65,11 @@ class DBStorage:
     def get(self, cls, id):
         ''' gett object by id '''
         # self.reload()
-        objs = self.all(cls)
-        
         if type(cls) == str:
             cls = ConvertStrCls(cls)
+
+        objs = self.all(cls)
+        
         if not objs or not cls:
             return None
     

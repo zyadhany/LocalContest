@@ -5,6 +5,7 @@
     margin-bottom: 20px;
   }
   
+
   table {
     width: 100%;
     border-collapse: collapse;
@@ -19,11 +20,6 @@
   }
   
   
-  .entry .writers {
-    display: flex;
-    flex-direction: column;
-  }
-  
   tbody tr:nth-child(even) {
     background-color: #f2f2f2;
   }
@@ -33,12 +29,12 @@
   }
   
   .entry td a {
-   color: #2196F3;
-   text-decoration: none;
+    color: #2196F3;
+    text-decoration: none;
   }
   
   .entry td a:hover {
-   text-decoration: underline;
+    text-decoration: underline;
   }
   
   td, th {
@@ -47,3 +43,16 @@
     border-bottom: 1px solid #ddd;
   }
   
+  .entry .writers {
+    display: flex;
+    flex-direction: column;
+    color: red;
+  }
+
+  .entry .writers a {
+    color:rgb(14, 161, 26);
+  }
+
+  .center_th {
+    text-align: center
+  }

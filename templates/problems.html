@@ -1,59 +1,44 @@
 {% extends "layout.html" %}
 
-{% block Title %} Contests {% endblock %}
+{% block style %} 
+<link rel="stylesheet" href="/static/css/contest.css"/>
+{% endblock %}
+
+{% block Title %} problems {% endblock %}
 
 {% block main %}
 
-<style>
-.contest-card {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 10px;
-  margin-bottom: 15px;
-}
+<div class="table-container">
+  <table>
+      <thead>
+          <tr>
+              <th>Name</th>
+              <th class="center_th">Rate</th>
+              <th class="center_th">Solved</th>
+              
+            </tr>
+          </thead>
+    {% for problem in problems %}
+          <tbody>
+            <!-- Repeat this row for each entry -->
+            <tr class="entry">
+              <!-- Name -->
+              <td><a href="/problems/{{problem['id']}}">{{problem['name']}} #{{problem['id']}}</a></td>
 
-.contest-header {
-  display: flex;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
+               <!-- Rate -->
+               <td class="center_th">{{problem['rate']}}</td>
 
-.contest-time {
-  font-size: 0.8em;
-  color: #999;
-}
+               <!-- Solved -->
+               <td class="center_th" style="color: green;">x43</td>
+          </tr>
 
-.contest-info {
-  display: flex;
-  align-items: center;
-}
+          <!-- ... other rows ... -->
 
-.contest-info span:not(:last-child) {
-  margin-right: 10px;
-}
-
-.contest-link {
-  text-decoration: none;
-  color: #007bff;
-}
-
-a {
-  text-decoration: none;
-  color: inherit; 
-}
-</style>
-
-{% for problem in problems %}
-<a href="/contest/4123">
-<div class="contest-card">
-  <div class="contest-header">
-    <span class="contest-name">{{problem['name']}}</span>
-    <span class="contest-time">rate</span>
-  </div>
+      </tbody>
+      {% endfor %}
+  </table>
 </div>
-</a>
-{% endfor %}
+
+
 
 {% endblock %}

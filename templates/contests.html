@@ -2,11 +2,24 @@
 
 {% block style %} 
 <link rel="stylesheet" href="/static/css/contest.css"/>
+<link rel="stylesheet" href="/static/css/form.css"/>
 {% endblock %}
 
 {% block Title %} Contests {% endblock %}
 
 {% block main %}
+
+
+{% if Manger is true%}
+<form class="form-detail" action="#" method="post", style="display: flex; justify-content: space-evenly; background-color: rgba(144, 143, 142, 0.216);">
+
+  <div class="form-row">
+    <button type="submit" class="register"><h4>Add Contest</h4></button>
+  </div>
+
+</form>
+
+{% endif%}
 
 <div class="table-container">
   <table>
@@ -24,21 +37,21 @@
             <!-- Repeat this row for each entry -->
             <tr class="entry">
               <!-- Name -->
-              <td><a href="#">CodeHuck Div4 Round #{{contest['id']}}</a></td>
+              <td><a href="/contests/{{contest['id']}}">{{contest['contest_name']}} #{{contest['id']}}</a></td>
 
               <!-- Writers -->
               <td class="writers">
-                <a href="/profile/Saged Rayan">Saged Rayan</a>
+                <a href="/profile/Saged Rayan" class="tcc">Saged Rayan</a>
                 <a href="/profile/Abdelrahman Atef">Abdelrahman Atef</a>
                 <a href="/profile/Zyad Hany">Zyad Hany</a>
                 <a href="/profile/Basmala Adel">Basmala Adel</a>
               </td>
 
               <!-- Start -->
-              <td> May  /08/2024 10:05</td>
+              <td> {{contest['start_time']}}</td>
 
                <!-- Length -->
-               <td>02:30</td>
+               <td>{{contest['duration']}}</td>
 
                <!-- Final standings -->
                <td>x55583</td>

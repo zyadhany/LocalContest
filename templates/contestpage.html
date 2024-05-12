@@ -1,0 +1,114 @@
+{% extends "layout.html" %}
+
+{% block style %} 
+<link rel="stylesheet" href="/static/css/contest.css"/>
+<link rel="stylesheet" href="/static/css/form.css"/>
+{% endblock %}
+
+{% block Title %} {{contest['contest_name']}} {% endblock %}
+
+{% block main %}
+
+{% if Manger is true%}
+<form class="form-detail" action="" method="POST">
+  <div class="form-row" style="background-color: rgba(168, 169, 170, 0.397); padding: 30px;">
+    <label for="contestName">Contest Name:</label>
+    <input type="text" id="contestName" name="contestName" required><br><br>
+
+    <label for="startTime">Start Time:</label>
+    <input type="datetime-local" id="startTime" name="startTime" required><br><br>
+
+    <label for="duration">Duration (in minutes):</label>
+    <input type="number" id="duration" name="duration" required><br><br>
+
+    <div class="form-row" style="display: flex; justify-content: center;">
+    <button type="submit" class="register" style="background-color: green; justify-self: center;">Save</button>
+    </div>
+  </div>
+ </form>
+{% endif %}
+
+<div class="table-container">
+
+
+
+  <table>
+      <thead>
+          <tr>
+              <th>Name</th>
+              <th class="center_th">Rate</th>
+              <th class="center_th">Solved</th>
+              {% if Manger is true%}
+              <th class="center_th">Edit</th>
+              {% endif %}
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Repeat this row for each entry -->
+            {% for problem in problems %}
+            <tr class="entry">
+              <!-- Name -->
+              <td><a href="/problems/{{problem['id']}}">{{problem['name']}} #{{problem['id']}}</a></td>
+
+               <!-- Rate -->
+               <td class="center_th">{{problem['rate']}}</td>
+
+               <!-- Solved -->
+               <td class="center_th" style="color: green;">x43</td>
+
+               {% if Manger is true%}
+               <td class="center_th" style="width: 100px;">
+                <div class="form-detail">
+                  <div class="form-row">
+                    <button type="submit" data-id="{{problem['id']}}" class="register deleteButton" style="background-color: rgb(178, 12, 12); width: 40px; padding: 10px; text-align: center;">X</button>
+                  </div>
+                </div>
+                
+              </td>
+               {% endif %}
+ 
+
+            </tr>
+
+          <!-- ... other rows ... -->
+          {% endfor %}
+
+      </tbody>
+  </table>
+</div>
+
+
+
+<script>
+document.querySelectorAll('.deleteButton').forEach(button => {
+    button.addEventListener('click', function() {
+        const itemId = this.getAttribute('data-id');
+        const apiUrl = `/contests/${itemId}`;
+        
+        fetch(apiUrl, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                // Add any other headers if needed
+            },
+        })
+        .then(response => {
+            if (response.ok) {
+                alert('Item deleted successfully!');
+                const trNode = this.closest('tr');
+                if (trNode) {
+                    trNode.parentNode.removeChild(trNode);
+                }
+            } else {
+                alert('Error deleting item.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Error deleting item.');
+        });
+    });
+});
+</script>
+
+{% endblock %}
