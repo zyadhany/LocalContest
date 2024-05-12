@@ -31,14 +31,15 @@
         {% block main %} {% endblock %}    
       </aside> 
       <aside>
-        <div class="profile">
+        <div class="body-right-bar">
           <img src="/static/css/homeim.png" alt="Profile Image">
             <h2>{{user['handle']}}</h2>
             <p>Rating: {{user['rate']}}</p>
             <p>Problems Solved: {{user['solved']}}</p>
             <p>{{user['status']}}</p>
-          </div>
-        </aside> 
+        </div>
+        {% block RightBar %} {% endblock%}
+      </aside> 
     </div>
   </body>
 </html>

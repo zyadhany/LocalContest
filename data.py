@@ -1,1 +1,1 @@
-MANAGERS = ['zyadhany']
+MANAGERS = ['zyadhany', 'Youssef Khaled']

@@ -1,6 +1,8 @@
 from flask import Blueprint, render_template, abort, session, redirect, url_for, request
 from healper import user_profile, Time_left, seconds_to_hms
-from models import storage, Contest
+from datetime import datetime
+from models import storage, Contest, Problem
+import requests
 import data
 
 contests_bp = Blueprint('contests_bp', __name__)
@@ -32,10 +34,31 @@ def contests_route():
 
 @contests_bp.route("/<id>", methods=['POST'])
 def contest_id_post(id):
-    print('asdfasdfsadfa')
+    contest_name = request.form['contestName']
+    start_time = request.form['startTime']
+    duration = int(request.form['duration'])  # Convert duration to integer
+    
+    cont:Contest = storage.get('contests', id)
+    if not cont:
+        abort(404)
+    
+    cont.contest_name = contest_name
+    cont.duration = duration
+    cont.start_time = datetime.strptime(start_time, '%Y-%m-%dT%H:%M')
+    cont.save()
     return redirect(request.url)
-    return "POSTign"
-    return redirect("/")
+
+@contests_bp.route("/<id>/add_problem", methods=['POST'])
+def contest_post_problem(id):
+    name = request.form.get('problemName')
+    rate = int(request.form.get('rate')) 
+
+    prob = Problem(name=name, rate=rate, contest_id=int(id))
+    if not prob:
+        abort(401)
+    prob.save()
+    return redirect(f"/contests/{id}")
+
 
 @contests_bp.route("/<id>", methods=['DELETE'])
 def contest_id_delete(id):
@@ -56,17 +79,17 @@ def contest_id(id):
     
     st = contest.start_time
 
-    timeleft = -1    
+    timeleft = -contest.duration * 60 
     if st:
         timeleft = Time_left(st)
-    
-    if timeleft > 0:
-        return render_template('timer.html', timeleft=timeleft, timeview=seconds_to_hms(timeleft))
     
     Manger = False
     if session["handle"] in data.MANAGERS:
         Manger = True
-
+    
+    if timeleft > 0 and not Manger:
+        return render_template('timer.html', timeleft=timeleft, timeview=seconds_to_hms(timeleft))
+    timeleft += contest.duration * 60
     user = user_profile()
     problems = storage.getDict('problems', {'contest_id':id})
     problem_list = []
@@ -74,4 +97,4 @@ def contest_id(id):
         problem_list.append(problem.to_dict())
     
     cont = storage.get('contests', id).to_dict()
-    return render_template('contestpage.html', user=user, problems=problem_list, Manger=Manger, contest=cont)
+    return render_template('contestpage.html', user=user, problems=problem_list, Manger=Manger, contest=cont, timeleft=timeleft, timeview=seconds_to_hms(timeleft))
