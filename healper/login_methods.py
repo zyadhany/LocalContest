@@ -13,7 +13,7 @@ def register_post(post):
         return "Empty Field"
     
     acc = storage.getDict(account, {'email':email})
-    print(acc)
+
     if acc:
         return 'email is exist'
     
@@ -36,7 +36,7 @@ def login_post(post):
         return None
     
     acc = storage.getDict(account, {'email':email, 'password':password})
-    print(acc)
+
     if not acc or acc[0].user is None:
         return None
     acc = acc[0]
