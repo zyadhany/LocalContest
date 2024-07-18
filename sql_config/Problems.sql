@@ -1,7 +1,10 @@
 CREATE TABLE Problems (
-    Id INT PRIMARY KEY,
+    problem_Id INT PRIMARY KEY,
     Rate INT,
-    Name VARCHAR(64),
+    problem_name VARCHAR(64),
     contest_id INT,
-    FOREIGN KEY (contest_id) REFERENCES Contest(Id)
+    package_url VARCHAR(128),
+    problem_INDEX VARCHAR(8),
+    FOREIGN KEY (contest_id) REFERENCES Contest(Id),
+    UNIQUE(problem_INDEX, contest_id)
 );
