@@ -1,0 +1,11 @@
+section .contest-parent{
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    /* height: 100vh; */
+    margin-top: 80px;
+    /* background-color: #ec2a2a; */
+    color:aliceblue;
+    font-family: 'Roboto', sans-serif;
+    font-size: 2rem;
+}
