@@ -3,7 +3,6 @@ from healper import user_profile, Time_left, seconds_to_hms
 from datetime import datetime
 from models import storage, Contest, Problem
 import requests
-import data
 
 contests_bp = Blueprint('contests_bp', __name__)
 
@@ -25,8 +24,6 @@ def contests_route():
         Contest_list.append(contest.to_dict())
 
     Manger = False
-    if session["handle"] in data.MANAGERS:
-        Manger = True
     
     return render_template('contests.html', user=user, contests=Contest_list, Manger=Manger)
 

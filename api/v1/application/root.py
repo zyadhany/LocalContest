@@ -35,21 +35,18 @@ def after_request(response):
     response.headers["Pragma"] = "no-cache"
     return response
 
-@root_bp.route("/")
-def index():
-    return redirect("home/")
 
 
 @root_bp.route("/logout")
 def logout():
     session.clear()
-    return redirect("/")
+    return {'status':"logged out"}, 200
 
-@root_bp.route("register", methods=["GET", "POST"])
+@root_bp.route("register", methods=["POST"])
 def register_route():
     return register()
 
-@root_bp.route("login", methods=["GET", "POST"])
+@root_bp.route("login", methods=["POST"])
 def login_route():
     return login()
 

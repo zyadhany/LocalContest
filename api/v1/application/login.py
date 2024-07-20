@@ -13,12 +13,10 @@ def register():
 
 def login():
     session.clear()
-    if request.method == "POST":
-        handle = login_post(request.form)
-        # error massage if can't login
-        if handle is None:
-            return render_template("login.html", message="invalid username and/or password.")
-        session["handle"] = handle
-        return redirect("/")
+    handle = login_post(request.form)
+    # error massage if can't login
+    if handle is None:
+        return {'status':"couldn't login"}, 400
+    session["handle"] = handle
+    return redirect("/")
 
-    return render_template("login.html") 

@@ -1,1 +1,0 @@
-MANAGERS = ['zyadhany', 'Youssef Khaled']
