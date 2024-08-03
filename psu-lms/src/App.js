@@ -13,6 +13,8 @@ import Nav from './Nav';
 import Login from './Login';
 import Register from './Register';
 import Contest from './Contest';
+import Submit from './Submit';
+import Home from './Home';
 
 
 export const AppContext = createContext();
@@ -24,7 +26,7 @@ function App() {
 
   const isLogin = () => {
     setState(false);
-    // setState(true);
+    setState(true);
   };
 
   const updateData = (newData) => {
@@ -42,12 +44,15 @@ function App() {
       <BrowserRouter>
         <Nav state={state}/>
         <Routes>
-          <Route path="/" element={<h1>home</h1>} /> {/* home => welcome page */}
+          <Route path="/" element={<Home/>} /> {/* home => welcome page */}
           <Route path="/login" element={<Login/>} /> {/* login */}
           <Route path="/register" element={<Register/>} /> {/* register */}
           {/* <Route path="/contests" element={<Login/>} /> */} {/* contests in future */}
           <Route path="/contest/:id" element={<Contest/>} /> {/* counter or problems according to the time */}
-          <Route path="/contest/:id/problems" element={<h1>hi1</h1>} /> {/* problems */}
+          <Route path="/contest/:id/submit" element={<Submit/>} /> {/* submit */}
+          <Route path="/contest/:id/submissions" element={<h1>hi1</h1>} /> {/* submissions */}
+          <Route path="/contest/:id/standing" element={<h1>hi1</h1>} /> {/* standing */}
+          <Route path="/contest/:id/clarifications" element={<h1>hi1</h1>} /> {/* questions and answers */}
         </Routes>
       </BrowserRouter>
     </AppContext.Provider>  

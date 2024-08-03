@@ -6,14 +6,16 @@ from models import storage, account, User
 from functools import wraps
 
 def register_post(post):
-    email = request.form.get("email")
-    password = request.form.get("password")
-    handle = request.form.get("handle")
+    data = request.get_json()
+
+    email = data.get('email')
+    handle = data.get('username')
+    password = data.get('password')
+
     if not email or not password or not handle:
         return "Empty Field"
-    
+        
     acc = storage.getDict(account, {'email':email})
-
     if acc:
         return 'email is exist'
     
@@ -30,11 +32,14 @@ def register_post(post):
     
 
 def login_post(post):
-    email = request.form.get("email")
-    password = request.form.get("password")
+    data = request.get_json()
+
+    email = data.get('email')
+    password = data.get('password')
     if not 'email' or not 'password':
         return None
     
+    print(email, password)
     acc = storage.getDict(account, {'email':email, 'password':password})
 
     if not acc or acc[0].user is None:

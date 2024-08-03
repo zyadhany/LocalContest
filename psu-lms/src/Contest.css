@@ -1,11 +1,96 @@
+section {
+    min-height: calc(100vh - 80px);
+    /* min-height: 100px; */
+    /* position: fixed; */
+    /* top:0px; */
+}
 section .contest-parent{
-    /* display: flex; */
+    display: flex;
     justify-content: center;
     align-items: center;
-    /* height: 100vh; */
-    margin-top: 80px;
+    height: 80%;
+    width: 60%;
     /* background-color: #ec2a2a; */
     color:aliceblue;
     font-family: 'Roboto', sans-serif;
     font-size: 2rem;
+}
+
+section .problems-parent {
+    display: block;
+    justify-content: center;
+    width: 60%;
+    border: 2px solid #ffa500;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    color:aliceblue;
+    font-family: 'Roboto', sans-serif;
+    font-size: 2rem;
+    margin: 80px 0px;
+
+}
+
+section .problems-parent .problems-main-row{
+    height: 65px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid #ffa500;
+    background-color: #27292c;
+    overflow: hidden;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    /* border-collapse: separate; */
+}
+
+section .problems-parent .problems-main-cell{
+    width: 33.3333%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /* background-color: #ffa500; */
+
+    /* border: 1px solid #ffa500; */
+    
+}
+
+.row{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: #ec2a2a; */
+}
+
+section .problems-parent .row .cell{
+    width: 33.3333%;
+    /* background-color: #ec2a2a; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ffa500;
+    padding: 8px;
+}
+
+section .problems-parent .solved .cell{
+    width: 33.3333%;
+    /* background-color: #ec2a2a; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ffa500;
+    padding: 8px;
+}
+
+ #border{
+    border-left: 2px solid #ffa500;
+    border-right: 2px solid #ffa500;
+ }
+
+.solved{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #51f01d94;
 }

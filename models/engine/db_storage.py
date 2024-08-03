@@ -39,8 +39,8 @@ class DBStorage:
                                       format(SQL_USER, SQL_PWD,
                                              SQL_HOST, SQL_DB),
                                       pool_pre_ping=True)
-        #Base.metadata.create_all(self.__engine)
-        Base.metadata.drop_all(self.__engine)
+        Base.metadata.create_all(self.__engine)
+        #Base.metadata.drop_all(self.__engine)
 
     def count(self, cls=None):
         ''' count of objects of class '''

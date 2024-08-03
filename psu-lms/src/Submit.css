@@ -1,0 +1,124 @@
+section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 80px);
+    width: 100%;
+    background-color: #3f4248;
+    /* background-color: #fc0606; */
+    /* background-color: #27488a; */
+    margin-top: 80px;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+section .submit-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* background-color:#27292c; */
+    /* width: 500px; */
+    /* height:330px; */
+    /* border-radius: 15px; */
+
+}
+.submit-parent {
+    margin-top: 20px;
+    /* border: 1px solid #fff; */
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #fff;;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    color: black;
+}
+
+textarea {
+    resize: none;
+    scroll-behavior: smooth;
+    white-space: nowrap;
+    overflow-x: auto; 
+    border: 1px solid#fff;;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #ffa500;
+    color: black;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ff8c00;
+}
+
+.react-simple-code-editor {
+    white-space: pre !important;
+    overflow: auto !important;
+    height: 300px;
+}
+
+.line-numbers {
+    position: absolute;
+    left: 10px;
+    width: 20px;
+    border-right: 1px solid #fff;;
+    padding-right: 10px;
+    text-align: right;
+    user-select: none;
+    pointer-events: none;
+}
+
+.react-simple-code-editor pre {
+    padding-left: 40px;
+    counter-reset: line;
+}
+
+.react-simple-code-editor pre::before {
+    counter-increment: line;
+    content: counter(line);
+    display: inline-block;
+    width: 30px;
+    margin-right: 10px;
+    color: #888;
+}
+
+label{
+    font-size: 20px;
+    font-weight: bold;
+    color:#fff;;
+}
+
+h2{
+    font-size: 30px;
+    font-weight: bold;
+    color:#fff;
+    margin-bottom: 20px;
+}
+
+.button-parent{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

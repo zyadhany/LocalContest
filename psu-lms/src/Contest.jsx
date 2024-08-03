@@ -1,13 +1,119 @@
 import React from 'react'
 import './Contest.css'
-import { useLocation, useParams } from 'react-router-dom'
+import { /*useLocation,*/ useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Contest = () => {
-    const location = useLocation();
-    const user = location.state?.user;
+    // const location = useLocation();
+    // const user = location.state?.user;
     const [showTimer, setShowTimer] = useState(true);
+    const [problems, setProblems] = useState([]);
+    useEffect(() => {
+      const data = [
+            {
+                index: "book1",
+                name: "name1",
+                number_solved: "category1",
+                problem_statue: false
+            },
+            {
+                index: "book2",
+                name: "name2",
+                number_solved: "category2",
+                problem_statue: false
+            },
+            {
+                index: "book2",
+                name: "name2",
+                number_solved: "category2",
+                problem_statue: true
+            },
+            {
+                index: "book2",
+                name: "name2",
+                number_solved: "category2",
+                problem_statue: false
+            },
+            {
+                index: "book2",
+                name: "name2",
+                number_solved: "category2",
+                problem_statue: true
+            },
+            {
+                index: "book2",
+                name: "name2",
+                number_solved: "category2",
+                problem_statue: false
+            },
+            {
+                index: "book2",
+                name: "name2",
+                number_solved: "category2",
+                problem_statue: true
+            },
+            {
+                index: "book2",
+                name: "name2",
+                number_solved: "category2",
+                problem_statue: true
+            }
+            ,
+            {
+                index: "book2",
+                name: "name2",
+                number_solved: "category2",
+                problem_statue: true
+            },
+            {
+                index: "book2",
+                name: "name2",
+                number_solved: "category2",
+                problem_statue: true
+            },
+            {
+                index: "book2",
+                name: "name2",
+                number_solved: "category2",
+                problem_statue: true
+            },
+            {
+                index: "book2",
+                name: "name2",
+                number_solved: "category2",
+                problem_statue: true
+            },
+            {
+                index: "book2",
+                name: "name2",
+                number_solved: "category2",
+                problem_statue: true
+            },
+            {
+                index: "book2",
+                name: "name2",
+                number_solved: "category2",
+                problem_statue: true
+            },
+            {
+                index: "book2",
+                name: "name2",
+                number_solved: "category2",
+                problem_statue: true
+            },
+            {
+                index: "book2",
+                name: "name2",
+                number_solved: "category2",
+                problem_statue: true
+            }
+        ];
+        setProblems(data);
+    }, []);
+
+    //console.log(problems);
+
     // console.log(user);
     // console.log(user.state);
 
@@ -31,20 +137,19 @@ const Contest = () => {
       };*/
 
       // fetchTargetDate();
-      setTargetDate(new Date('2024-07-25T00:00:00'));
+      setTargetDate(new Date('2024-08-02T20:34:50'));
     }, []);
 
     useEffect(() => {
       if (!targetDate) return;
 
       const interval = setInterval(() => {
-        const now = new Date();
-        // const difference = targetDate - now;
-        const difference = 0;
-        // console.log(difference);
-        // console.log(targetDate);
-        // console.log(now);
-
+        const now = new Date();////////////////////////////important
+        const difference = targetDate - now;
+        //console.log(difference);
+        //console.log(targetDate);
+        //console.log(now);
+        
         if (difference <= 0) {
           clearInterval(interval);
           setShowTimer(false);
@@ -78,11 +183,20 @@ const Contest = () => {
                 )}
             </div>
           ) : (
-            <div className='contest-parent'>
-              <h1>Contest has ended</h1>
-              {/* <button onClick={() => navigate('/contest/${id}/problems' , {state : 'hi'})}>Go to problems</button> */}
-            </div>
-          )}
+            <div className='problems-parent'>
+                <div className='problems-main-row'>
+                    <span className='problems-main-cell'>Index</span>
+                    <span className='problems-main-cell' id='border'>Name</span>
+                    <span className='problems-main-cell'>Number Solved</span>
+                </div>
+                {problems.map((problem, index) => (
+                  <div key={index} className={problem.problem_statue ? 'solved' : 'row'}>
+                      <span className='cell'>{problem.index}</span>
+                      <span className='cell'>{problem.name}</span>
+                      <span className='cell'>{problem.number_solved}</span>
+                  </div>
+                ))}
+          </div>)}
         </section>
     </>
   )

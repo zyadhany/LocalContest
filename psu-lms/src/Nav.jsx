@@ -17,6 +17,10 @@ const Navv = (props) => {
     const toggleNavbar = () => {
         setIsOpen(!isOpen);
     };
+
+    const logout = () => {
+        setIsOpen(isOpen);
+    };
     useEffect(() => {
         const handleResize = () => {
           if (window.innerWidth > 768) {
@@ -29,7 +33,7 @@ const Navv = (props) => {
         };
       }, [isOpen]);
 
-    //   console.log(props.state);
+      console.log(props.state);
   return (
     <>
         <header>
@@ -43,13 +47,13 @@ const Navv = (props) => {
                         {!props.state && <Link to='/register'>Register</Link>}
                     </span>}
                     {props.state && <span className='nav-link'>
-                        {props.state && <Link to='/'>dash</Link>}
+                        {props.state && <Link to='/contest/${id}'>Problems</Link>}
                     </span>}
                     {props.state && <span className='nav-link'>
-                        {props.state && <Link to='/'>home1</Link>}
+                        {props.state && <Link to='/contest/${id}/submit'>Submit</Link>}
                     </span>}
                     {props.state && <span className='nav-link'>
-                        {props.state && <Link to='/'>Logout</Link>}
+                        {props.state && <Link to='/' onClick={logout}>Logout</Link>}
                     </span>}
                 </div>
             </nav>

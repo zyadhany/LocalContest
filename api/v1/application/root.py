@@ -46,8 +46,6 @@ def logout():
 def register_route():
     return register()
 
-@root_bp.route("login", methods=["POST"])
+@root_bp.route("login", methods=["GET", "POST"])
 def login_route():
     return login()
-
-

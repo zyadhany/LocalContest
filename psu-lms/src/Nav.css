@@ -46,7 +46,7 @@ header .navbutton{
   display: flex;
   height: 100%;
   width: 500px;
-  justify-content:end;
+  justify-content:flex-end;
   align-items: center;
   z-index: 150;
 }
